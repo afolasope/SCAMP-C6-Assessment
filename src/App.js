@@ -1,5 +1,7 @@
+import Page from './Page';
+
 function App() {
-  return <p>xoxox</p>;
+  return <Page />;
 }
 
 export default App;

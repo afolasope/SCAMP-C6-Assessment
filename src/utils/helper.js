@@ -2,15 +2,6 @@ import thumbnail1 from '../assets/rose-5.jpg';
 import thumbnail2 from '../assets/rose-1.jpg';
 import thumbnail3 from '../assets/rose-3.jpg';
 import thumbnail4 from '../assets/rose-6.jpg';
-// import thumbnail1 from '../assets/image-product-1-thumbnail.jpg';
-// import thumbnail2 from '../assets/image-product-2-thumbnail.jpg';
-// import thumbnail3 from '../assets/image-product-3-thumbnail.jpg';
-// import thumbnail4 from '../assets/image-product-4-thumbnail.jpg';
-
-// import photo1 from '../assets/image-product-1.jpg';
-// import photo2 from '../assets/image-product-2.jpg';
-// import photo3 from '../assets/image-product-3.jpg';
-// import photo4 from '../assets/image-product-4.jpg';
 
 import photo1 from '../assets/rose-5.jpg';
 import photo2 from '../assets/rose-1.jpg';

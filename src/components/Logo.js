@@ -1,12 +1,12 @@
-import React from 'react'
-import logo from '../assets/logo.svg'
+import React from 'react';
+import logo from '../assets/logo.svg';
 
 const Logo = () => {
   return (
     <div>
-      <img src={logo} alt="logo" />
+      <h1>RoSeS</h1>
     </div>
-  )
-}
+  );
+};
 
-export default Logo
+export default Logo;

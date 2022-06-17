@@ -1,15 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
 import { closeMenu } from '../assets';
-import { useGlobalContext } from '../context/global_context';
 import { navLinks } from '../utils/helper';
-const Sidebar = () => {
-  const { nav_is_open, toggleNav } = useGlobalContext();
-
+const Sidebar = ({ setSidebarToggle, sidebarToggle }) => {
   return (
     <Wrapper>
-      <aside className={`${nav_is_open ? 'aside show' : 'aside'}`}>
-        <img src={closeMenu} alt="" onClick={() => toggleNav(!nav_is_open)} />
+      <aside
+        className={`${sidebarToggle ? 'sidebar show-sidebar' : 'sidebar'}`}
+      >
+        <img
+          src={closeMenu}
+          alt="close sidebar icon"
+          onClick={() => {
+            setSidebarToggle(false);
+            console.log(sidebarToggle);
+          }}
+        />
         <ul className="nav-links">
           {navLinks.map(({ id, name, link }) => {
             return (
@@ -25,32 +31,42 @@ const Sidebar = () => {
 };
 
 const Wrapper = styled.div`
-  .aside {
-    top: 0;
+  .sidebar {
     position: fixed;
+    top: 0;
+    width: 0;
     height: 100vh;
-    width: 0%;
-    z-index: -1;
-    transition: all 3s linear;
-    transform: translateX(-50%);
-    background-color: fuchsia;
+    background-color: var(--white);
+    transform: translateX(-100%);
+    transition: all 0.3s ease;
+    z-index: 0;
+    opacity: 0;
   }
-  .show {
-    transform: translateX(0%);
-    width: 100%;
+  .show-sidebar {
+    width: 60%;
+    transform: translate(0);
     z-index: 10;
+    padding: 1.5rem;
+    opacity: 1;
   }
   .nav-links {
     padding: 2rem 0;
   }
   .nav-link {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
   }
   .nav-link a {
     color: var(--very-dark-blue);
     font-weight: 600;
+    padding: 0.6rem;
+    width: 100%;
+    display: block;
   }
-  @media (min-width: 1024px) {
+  .nav-link a:hover {
+    color: var(--white);
+    background-color: var(--grayish-blue);
+  }
+  @media (min-width: 64em) {
     display: none;
   }
 `;

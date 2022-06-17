@@ -1,10 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { plusBtn, minusBtn, cartIconWhite } from '../assets';
-import { useGlobalContext } from '../context/global_context';
 
 const AddToCart = () => {
-  const { amount, toggleAmount } = useGlobalContext();
+  const [amount, setAmount] = useState(0);
+
+  const toggleAmount = (value) => {
+    if (value === 'inc') {
+      setAmount((prev) => {
+        return (prev = parseInt(prev) + 1);
+      });
+    } else if (value === 'dec') {
+      setAmount((prev) => {
+        if (prev < 1) {
+          return (prev = 0);
+        }
+        return (prev = parseInt(prev) - 1);
+      });
+    }
+  };
 
   return (
     <Wrapper>
@@ -15,7 +29,16 @@ const AddToCart = () => {
           className="dec-btn btn"
           onClick={() => toggleAmount('dec')}
         />
-        <span className="amount">{amount}</span>
+        <input
+          type="number"
+          className="amount"
+          min={0}
+          name="amount"
+          value={amount}
+          onChange={(e) => {
+            setAmount(e.target.value);
+          }}
+        />
         <img
           src={plusBtn}
           alt="decrease cart items"
@@ -41,7 +64,10 @@ const Wrapper = styled.div`
     border-radius: var(--border-radius);
 
     .amount {
-      font-weight: 600;
+      width: 3rem;
+      padding: 0.3;
+      font-size: inherit;
+      text-align: center;
     }
     img {
       object-fit: contain;
@@ -71,7 +97,7 @@ const Wrapper = styled.div`
     transform: translateY(-5%);
   }
 
-  @media (min-width: 600px) {
+  @media (min-width: 37.5em) {
     display: flex;
     justify-content: space-between;
     align-items: center;

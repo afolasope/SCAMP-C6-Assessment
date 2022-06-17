@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import { avatar } from './assets';
 import {
   Cart,
   Nav,
@@ -9,16 +10,17 @@ import {
   Sidebar,
   ProductDetails,
 } from './components';
-import avatar from './assets/image-avatar.png';
-import { useGlobalContext } from './context/global_context';
 
 const Page = () => {
-  const { nav_is_open } = useGlobalContext();
+  const [sidebarToggle, setSidebarToggle] = useState(false);
   return (
     <Wrapper>
       <header>
         <div className="nav-logo">
-          <Nav />
+          <Nav
+            setSidebarToggle={setSidebarToggle}
+            sidebarToggle={sidebarToggle}
+          />
           <Logo />
         </div>
         <div className="cart-user">
@@ -29,8 +31,11 @@ const Page = () => {
         </div>
       </header>
       <main className="main">
-        {nav_is_open && <Overlay />}
-        {nav_is_open && <Sidebar />}
+        {sidebarToggle && <Overlay />}
+        <Sidebar
+          setSidebarToggle={setSidebarToggle}
+          sidebarToggle={sidebarToggle}
+        />
         <Photos />
         <ProductDetails />
       </main>
@@ -56,9 +61,8 @@ const Wrapper = styled.section`
   .nav-logo {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
     justify-content: space-between;
-    width: 11rem;
+    width: 6.5rem;
     @media (min-width: 1024px) {
       flex-direction: row-reverse;
       flex-basis: 65%;
@@ -76,6 +80,7 @@ const Wrapper = styled.section`
     .avatar {
       height: 2rem;
       width: 2rem;
+      transition: transform 0.3s ease;
       img {
         height: 100%;
         width: 100%;
@@ -83,7 +88,9 @@ const Wrapper = styled.section`
     }
     .avatar:hover {
       border: 2px solid var(--pry-color);
+      transform: scale(1.2);
       border-radius: 50%;
+      cursor: pointer;
     }
   }
   .main {

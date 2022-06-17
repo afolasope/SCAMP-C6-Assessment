@@ -13,7 +13,7 @@ const Wrapper = styled.div`
   width: 100%;
   background-color: var(--black-lighthouse);
 
-  @media (min-width: 1024px) {
+  @media (min-width: 64em) {
     display: none;
   }
 `;

@@ -46,7 +46,7 @@ const Wrapper = styled.section`
     justify-content: space-between;
   }
   .price-discount {
-    flex-basis: 30%;
+    width: 10rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -78,7 +78,7 @@ const Wrapper = styled.section`
     border-radius: var(--border-radius);
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 64em) {
     .name {
       font-size: 2.5rem;
     }

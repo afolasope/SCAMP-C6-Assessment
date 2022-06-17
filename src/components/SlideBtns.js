@@ -58,7 +58,7 @@ const Wrapper = styled.div`
     position: absolute;
     left: 2%;
   }
-  @media (min-width: 1024px) {
+  @media (min-width: 64em) {
     display: none;
   }
 `;

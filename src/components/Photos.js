@@ -56,6 +56,7 @@ const Wrapper = styled.section`
       border: 3px solid var(--pry-color);
       opacity: 0.5;
       transform: scale(1.1);
+      cursor: pointer;
     }
     .active {
       border: 3px solid var(--pry-color);
@@ -63,7 +64,7 @@ const Wrapper = styled.section`
     }
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 64em) {
     .main-image {
       height: 30rem;
       img {

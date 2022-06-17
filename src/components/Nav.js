@@ -1,25 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useGlobalContext } from '../context/global_context';
 import { navLinks } from '../utils/helper';
-import { closeMenu, openMenu } from '../assets';
+import { openMenu } from '../assets';
 
-const Nav = () => {
-  const { toggleNav, is_sidebar_open } = useGlobalContext();
-
+const Nav = ({ setSidebarToggle }) => {
   return (
     <Wrapper>
       <div className="nav-btns">
-        {is_sidebar_open ? (
-          <img
-            className="close-nav"
-            src={closeMenu}
-            alt="close nav"
-            onClick={toggleNav}
-          />
-        ) : (
-          <img src={openMenu} alt="open nav" onClick={toggleNav} />
-        )}
+        <img
+          src={openMenu}
+          alt="open nav"
+          onClick={() => setSidebarToggle(true)}
+        />
       </div>
       <ul className="nav-items">
         {navLinks.map(({ id, name, link }) => {
@@ -60,7 +52,7 @@ const Wrapper = styled.nav`
       color: var(----very-dark-blue);
     }
   }
-  @media (min-width: 1024px) {
+  @media (min-width: 64em) {
     .nav-items {
       display: flex;
       justify-content: space-around;
